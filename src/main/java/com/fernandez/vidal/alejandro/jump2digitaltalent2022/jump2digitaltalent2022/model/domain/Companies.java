@@ -3,11 +3,16 @@ package com.fernandez.vidal.alejandro.jump2digitaltalent2022.jump2digitaltalent2
 import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 
 @Document(collection = "Companies")
 public class Companies {
-
+	
+	private String _id;
+	
 	@Id
+	@Field("id")
 	private String id;
 
 	private String website;
@@ -32,9 +37,10 @@ public class Companies {
 
 	}
 
-	public Companies(String id, String website, String name, int founded, String size, String locality, String region,
-			String country, String industry, String linkedin_url) {
-
+	public Companies(String _id, String id, String website, String name, int founded, String size, String locality,
+			String region, String country, String industry, String linkedin_url) {
+		super();
+		this._id = _id;
 		this.id = id;
 		this.website = website;
 		this.name = name;
@@ -45,6 +51,14 @@ public class Companies {
 		this.country = country;
 		this.industry = industry;
 		this.linkedin_url = linkedin_url;
+	}
+
+	public String get_id() {
+		return _id;
+	}
+
+	public void set_id(String _id) {
+		this._id = _id;
 	}
 
 	public String getId() {
@@ -129,8 +143,9 @@ public class Companies {
 
 	@Override
 	public String toString() {
-		return "Companies [id=" + id + ", website=" + website + ", name=" + name + ", founded=" + founded + ", size="
-				+ size + ", locality=" + locality + ", region=" + region + ", country=" + country + ", industry="
-				+ industry + ", linkedin_url=" + linkedin_url + "]";
+		return "Companies [_id=" + _id + ", id=" + id + ", website=" + website + ", name=" + name + ", founded="
+				+ founded + ", size=" + size + ", locality=" + locality + ", region=" + region + ", country=" + country
+				+ ", industry=" + industry + ", linkedin_url=" + linkedin_url + "]";
 	}
+
 }
